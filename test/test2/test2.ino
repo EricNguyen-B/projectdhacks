@@ -12,6 +12,7 @@ boolean isGreen_tg2;
 boolean carDetected;
 int distance;
 long duration;
+int counter;
 
 void setup() {
   pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
@@ -23,10 +24,11 @@ void setup() {
   pinMode(GREEN2, OUTPUT);
   distance = 0;
   score1 = 50;
-  score2 = 2;
+  score2 = 30;
   isGreen_tg1 = false;
   isGreen_tg2 = true;
   carDetected = false;
+  counter = 0;
 }
 
 //Score changes based on how many seconds it the distance stays the same
@@ -47,6 +49,13 @@ void changeRed(int GreenLight, int RedLight) {
 }
 
 void carDetection(){
+  Serial.print("Score1: ");
+  Serial.println(score1);
+  Serial.print("Score2: ");
+  Serial.println(score2);
+  counter++;
+  Serial.print("Counter: ");
+  Serial.println(counter);
   if (distance < 20){
     carDetected = true;
   } 
@@ -139,6 +148,7 @@ void checker2() {
 
 //changes the lights
 void light_changes() {
+  counter = 0;
   if (isGreen_tg1){
     changeRed(GREEN1, RED1);
     changeGreen(GREEN2, RED2);

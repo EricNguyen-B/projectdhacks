@@ -83,6 +83,8 @@ void check_road1() {
     check_road2();
   }
   else {
+      readDistance();
+      carDetection();
       if (carDetected){
         score1 += 3;
       }
@@ -100,6 +102,8 @@ void check_road2() {
     check_road1();  
   }
   else{
+    readDistance();
+    carDetection();
     if (carDetected) {
       score2 += 3;  
     }  

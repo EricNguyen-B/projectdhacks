@@ -1,7 +1,7 @@
 // defines pins numbers
 const int trigPin = 5;
 const int echoPin = 6;
-const int YELLOW = 13;
+const int RED = 13;
 const int GREEN = 11;
 
 // defines variables
@@ -11,7 +11,7 @@ void setup() {
   pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
   pinMode(echoPin, INPUT); // Sets the echoPin as an Input
   Serial.begin(9600); // Starts the serial communication
-  pinMode(YELLOW, OUTPUT);
+  pinMode(RED, OUTPUT);
   pinMode(GREEN, OUTPUT);
 }
 
@@ -31,12 +31,12 @@ void loop() {
   Serial.print("Distance: ");
   Serial.print(distance);
   Serial.println(" cm");
-  if (distance > 500) {
-    digitalWrite(YELLOW, HIGH);
+  if (distance > 10) {
+    digitalWrite(RED, HIGH);
     digitalWrite(GREEN, LOW);
     }
   else {
-    digitalWrite(YELLOW, LOW);
+    digitalWrite(RED, LOW);
     digitalWrite(GREEN, HIGH);
     }
 }

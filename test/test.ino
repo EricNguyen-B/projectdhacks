@@ -28,7 +28,7 @@ void loop() {
 // Reads the echoPin, returns the sound wave travel time in microseconds
   duration = pulseIn(echoPin, HIGH);
 // Calculating the distance
-  distance= (duration / 29) / 2;
+  distance = (duration / 29) / 2;
   // Prints the distance on the Serial Monitor
   Serial.print("Distance: ");
   Serial.print(distance);
@@ -39,7 +39,6 @@ void loop() {
     if (distance > 200) {
       digitalWrite(RED, HIGH);
       digitalWrite(GREEN, LOW);
-      
       }
     else if (distance < 200){
       digitalWrite(RED, LOW);
@@ -48,6 +47,5 @@ void loop() {
     else {
       Serial.print("Cannot detect");
     }
-    
   }
 }

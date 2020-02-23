@@ -163,3 +163,4 @@ void light_changes() {
     isGreen_tg2 = false;
     check_road1();
   }
+}

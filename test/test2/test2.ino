@@ -23,15 +23,14 @@ void setup() {
   pinMode(GREEN2, OUTPUT);
   distance = 0;
   score1 = 50;
-  score2 = 20;
-  isGreen_tg1 = true;
-  isGreen_tg2 = false;
+  score2 = 2;
+  isGreen_tg1 = false;
+  isGreen_tg2 = true;
+  carDetected = false;
 }
 
 //Score changes based on how many seconds it the distance stays the same
 void loop(){
-  readDistance();
-  carDetection();
   check_road1();
 }
 
@@ -47,8 +46,8 @@ void changeRed(int GreenLight, int RedLight) {
   digitalWrite(RedLight, HIGH);
 }
 
-boolean carDetection(){
-  if (distance <= 20){
+void carDetection(){
+  if (distance < 20){
     carDetected = true;
   } 
   else {
@@ -78,13 +77,14 @@ void readDistance() {
 
 //checks traffic on road 1
 void check_road1() {
+  delay(1000);
+  readDistance();
+  carDetection();
   if (isGreen_tg1){
-    score1 --;
+    score1 -= 1;
     check_road2();
   }
   else {
-      readDistance();
-      carDetection();
       if (carDetected){
         score1 += 3;
       }
@@ -97,8 +97,11 @@ void check_road1() {
 
 //checks traffic on road 2
 void check_road2() {
+  delay(1000);
+  readDistance();
+  carDetection();
   if (isGreen_tg2){
-    score2 --;
+    score2 -= 1;
     check_road1();  
   }
   else{
@@ -137,7 +140,6 @@ void checker2() {
 //changes the lights
 void light_changes() {
   if (isGreen_tg1){
-    delay(1000);
     changeRed(GREEN1, RED1);
     changeGreen(GREEN2, RED2);
     isGreen_tg1 = false;
@@ -145,7 +147,6 @@ void light_changes() {
     check_road2();
   }
   else{
-    delay(1000);
     changeGreen(GREEN1, RED1);
     changeRed(GREEN2, RED2);
     isGreen_tg1 = true;

@@ -7,4 +7,5 @@ We developed an algorithm and built a physical simulator in arduino to efficient
 Developed by Eric Nguyen, Rafael Perez, Jessica Jiang, Nay Ko 
 
 Demo Video: https://youtu.be/Xzg9SVmMiPg
+
 Presentation Slides: https://drive.google.com/open?id=1ZjaaThf-n_qCoSeOn1dQkAUTqvIS8FT0VYwpfojsOXU
